@@ -1,0 +1,60 @@
+// .nav {
+//   width: $slider-size;
+//   padding: $margin;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   grid-template-rows: max-content;
+//   align-items: start;
+
+//   transform: translateX(-100vw);
+//   animation: menuIn 0.4s ease-in 3s forwards;
+
+//   z-index: 100;
+
+//   @include tablet {
+//     width: 100vw;
+//     transform: translateX(0);
+//     animation: none;
+//     position: fixed;
+//     // z-index: 101;
+//   }
+
+//   @include landscape {
+//     display: none;
+//   }
+
+//   * {
+//     cursor: pointer;
+//   }
+
+//   &_menu {
+//     width: 3.5rem;
+//     height: 3.5rem;
+//   }
+
+//   &_logo {
+//     justify-self: center;
+//     width: 10rem;
+//     height: 10rem;
+//   }
+
+//   &_user {
+//     width: 3.5rem;
+//     height: 3.5rem;
+
+//     &-link {
+//       justify-self: right;
+//     }
+//   }
+// }
+
+// #reviews .nav {
+//   position: relative;
+//   width: 100%;
+//   animation: none;
+//   transform: translateX(0);
+// }

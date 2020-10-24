@@ -1,0 +1,37 @@
+// .signup {
+// 	visibility: hidden;
+
+// 	&_container {
+// 		width: $slider-size;
+// 		height: 100vh;
+// 		display: grid;
+// 		align-items: end;
+// 		justify-items: center;
+
+// 		background: rgba($color-black, 0.5);
+
+// 		@include tablet {
+// 			width: 100vw;
+// 		}
+// 	}
+// 	&_form {
+// 		height: 50vh;
+// 		display: grid;
+// 		margin-bottom: 35%;
+// 		&-age {
+// 			margin-bottom: 3rem;
+// 		}
+// 		&-button {
+// 			margin-bottom: 9rem;
+// 		}
+// 	}
+// }
+
+// .signup_select {
+// 	width: 70%;
+// 	padding: 0.5rem 0.5rem;
+// }
+
+// #signup:target {
+// 	visibility: visible;
+// }

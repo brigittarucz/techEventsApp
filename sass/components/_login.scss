@@ -1,0 +1,37 @@
+// .login {
+//   visibility: hidden;
+//   transition: all 0.2s ease-in;
+
+//   &_container {
+//     width: $slider-size;
+//     height: 100vh;
+
+//     display: grid;
+//     grid-template-rows: 65vh 1fr;
+//     align-items: end;
+//     justify-items: center;
+
+//     background: rgba($color-black, 0.5);
+
+//     @include tablet {
+//       width: 100vw;
+//     }
+//   }
+
+//   &_form {
+//     display: grid;
+
+//     &-button {
+//       margin-top: 5rem;
+//       margin-bottom: 5rem;
+//     }
+//     &-signup {
+//       margin: 0;
+//       align-self: start;
+//     }
+//   }
+// }
+
+// #login:target {
+//   visibility: visible;
+// }
