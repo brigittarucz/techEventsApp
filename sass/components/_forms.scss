@@ -1,0 +1,68 @@
+// 	&:focus 
+// 	&::placeholder 
+
+.profile {
+
+    &__form-group, &__form-add {
+        @include formGroup($color-tertiaryturqoise, $color-darkblue, $color-lightblue);   
+        
+        label {
+            font-weight: 600;
+        }
+    }
+
+    &__form-select {
+        @include formSelect($color-tertiaryturqoise, $color-darkblue, $color-lightblue);
+
+        label {
+            font-weight: 600;
+        }
+    }
+
+   &__interests {
+    ul {
+        list-style-type: none;
+
+        li {
+            font-size: 1.4rem;
+            display: inline-block;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            background-color: $color-mainturqoise;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            color: white;
+            font-weight: 400;
+
+            &::after {
+                content: 'X';
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 800;
+                margin-left: 1rem;
+            }
+        }
+    }
+   }
+}
+
+.auth {
+
+    &__form-group {
+        @include formGroup($color-mediumgrey, $color-lightbeige, $color-greyblue);        
+    }
+
+    &__form-checkbox {
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+
+        label {
+            font-size: 1.4rem;
+            color: $color-mediumgrey;
+        }
+    }
+
+    &__form-select {
+        @include formSelect($color-mediumgrey, $color-lightbeige, $color-greyblue);
+    }
+
+}

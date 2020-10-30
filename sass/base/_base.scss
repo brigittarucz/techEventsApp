@@ -21,3 +21,8 @@ body {
 	scroll-behavior: smooth;
 	overflow: hidden;
 }
+
+.main__wrapper, .dashboard__wrapper  {
+	display: grid;
+	grid-template-columns: 7rem calc(100vw - 7rem);
+}

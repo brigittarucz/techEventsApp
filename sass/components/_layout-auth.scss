@@ -1,0 +1,116 @@
+/************************ LAYOUT AUTH ************************/
+/*************************************************************/
+/*************************************************************/
+
+.main__auth {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+
+	&-overlay {
+		position: absolute;
+		z-index: 5;
+		width: 50vw;
+		height: 100vh;
+		background: url('assets/images/login_signup.jpg');
+		background-size: 150% 150%;
+		background-position: top;
+		clip-path: polygon(0 0, 100% 0, 76% 100%, 0% 100%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		// display: none;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
+		.inactive {
+			display: none;
+		}
+
+		article {
+			color: white;
+			width: 35rem;
+			text-align: center;
+			margin-left: -8rem;
+
+			p {
+				text-shadow: $shadow-black;
+			}
+		}
+
+		article * {
+			margin: 1.5rem;
+		}
+
+		&_reverse {
+			right: 0;
+			transform: scaleX(-1);
+
+			article {
+				transform: scaleX(-1);
+			}
+		}
+	}
+
+	&-login {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		width: 42rem;
+		margin-left: 5vw;
+
+		&_form {
+			display: grid;
+			width: 100%;
+
+			a {
+				float: right;
+				color: $color-mediumgrey;
+				text-decoration: none;
+			}
+
+
+		}
+	}
+
+	&-signup {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		width: 42rem;
+		margin-left: 10vw;
+
+		&_form {
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: repeat(5, auto-fit);
+			grid-column-gap: 1rem;
+
+            @include divGrid(1, 1/span 3, 1/span 1);
+            @include divGrid(2, 4/span 3, 1/span 1);
+            @include divGrid(3, 1/span 3, 2/span 1);
+            @include divGrid(4, 4/span 3, 2/span 1);
+            @include divGrid(5, 1/span 2, 3/span 1);
+            @include divGrid(6, 3/span 4, 3/span 1);
+            @include divGrid(7, 1/span 6, 4/span 1);
+
+			& button {
+				grid-column: 1/span 6;
+				grid-row: 5/span 1;
+			}
+		}
+
+	}
+
+}

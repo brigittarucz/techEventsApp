@@ -1,0 +1,227 @@
+/********************* LAYOUT DASHBOARD **********************/
+/*************************************************************/
+/*************************************************************/
+
+.main__dashboard {
+	display: grid;
+	grid-template-columns: 3fr 4fr 3fr;
+
+	&-schedule {
+		background-color: $color-blue;
+		color: white;
+		padding: 2.5rem;
+		padding-right: 2rem;
+		padding-bottom: 0;
+
+		&_calendar {
+			display: grid;
+			grid-template-columns: 4fr 1.5fr;
+
+			h4 {
+				margin: 1rem 0;
+				color: $color-pastelblue;
+			}
+
+			.dashboard__calendar {
+				
+				&-button {
+					background-color: $color-lightblue;
+					grid-column: 1/span 2;
+					margin: 1.5rem 0;
+					border-radius: 5rem;
+					display: flex;
+					position: relative;
+
+					& * {
+						display: inline-block;
+						height: 3rem;
+						width: 50%;
+						border: 0;
+						font-weight: 800;
+						color: $color-pastelblue;
+					}
+
+					button:nth-of-type(1) {
+						border-top-left-radius: 2rem;
+						border-bottom-left-radius: 2rem;
+						background-color: $color-lightblue;
+					}
+
+					button:nth-of-type(2) {
+						background-color: $color-mainfucsia;
+						box-shadow: $shadow-secfucsia45;
+						border-radius: 2rem;
+						position: absolute;
+						right: 0;
+					}
+				}
+
+				&-arrows {
+
+					& img {
+						width: 1.5rem;
+					}
+
+					& div {
+						display: inline-block;
+						padding: 1rem 1.25rem;
+						border-radius: 50%;
+						background-color: $color-lightblue;
+
+						&:nth-of-type(1) img {
+							transform: rotate(180deg);
+						}
+					}
+				}
+
+				&-date {
+					grid-column: 1/span 2;
+					margin: 0 -2.5rem;
+					height: 23rem;
+					border-bottom: 0.5px solid $color-lightblue;
+				}
+			}
+
+		}
+
+		&_upcoming {
+				margin: 0 -2.5rem;
+				margin-right: -2rem;
+				padding: 0 2rem;
+				
+				height: 44vh;
+                overflow-y: scroll;
+                
+                @include scrollBar;
+
+			.dashboard__schedule-upcoming {
+				border-radius: 2rem;
+				background-color: $color-lightblue;
+				display: grid;
+				grid-template-columns: 1.5fr 4fr;
+				grid-column-gap: 1rem;
+				padding: 1rem;
+				margin-bottom: 1.5rem;
+
+				&_active {
+					background-color: $color-mainturqoise;
+					box-shadow: $shadow-mainturqoise;
+				}
+				
+				.schedule-item {
+					&_end, &_start, &_topic, &_title {
+						padding: 0.5rem;
+					}
+
+					&_end, &_topic {
+						color: $color-lightgrey;
+					}
+				}
+
+				&_date-main {
+					margin: 2rem 0;
+				}
+
+				&_left {
+					border-right: 0.5px solid $color-pastelblue;
+				}
+
+			}
+
+		}
+
+	}
+
+	&-suggestions {
+		background-color: $color-darkblue;
+		padding: 2.5rem;
+		padding-right: 1.5rem;
+		height: 100vh;
+		overflow-y: scroll;
+
+        @include scrollBar;
+        
+		h3, h4 {
+			color: white;
+		}
+	}
+
+	&-profile {
+		background-color: $color-blue;
+		padding: 2.5rem;
+		padding-bottom: 0;
+		margin-left: 1r;
+
+		h3 {
+			color: white;
+		}
+
+		.main__profile-user {
+			&_details {
+				margin: 2rem 1rem;
+				margin-bottom: 0.5rem;
+				color: white;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				div {
+					margin: 0 1.5rem;
+				}
+
+				p {
+					margin: 0.5rem 0;
+				}
+
+				p:nth-of-type(2) {
+					color: $color-lightgrey;
+				}
+
+				p:nth-of-type(3) {
+					color: $color-mainturqoise;
+					
+					&::before {
+						content: '';
+						background-image: url("assets/svg/location.svg");
+						background-size: contain;
+						background-repeat: no-repeat;
+						// position: absolute;
+						padding-left: 2rem;
+						height: 1.5rem;
+						width: 1.5rem;
+					}
+				}
+
+				img {
+					height: 10rem;
+					width: 10rem;
+					object-fit: cover;
+					border-radius: 10rem;
+					border: 0.5rem solid $color-lightblue;
+					padding: 0.25rem;
+					background: $color-blue;
+				}
+			}
+
+			&_data form {
+				display: grid;
+				grid-template-columns: 1.5fr repeat(5, 1fr);
+				grid-column-gap: 1rem;
+                
+                @include divGrid(1, 1/span 6, auto);
+                @include divGrid(2, 1/span 2, auto);
+                @include divGrid(3, 3/span 4, auto);
+                @include divGrid(4, 1/span 6, auto);
+                @include divGrid(5, 1/span 2, auto);
+                @include divGrid(6, 3/span 4, auto);
+                @include divGrid(7, 1/span 3, auto);
+                @include divGrid(8, 4/span 3, auto);
+
+				button {
+					grid-column: 1/span 6;
+				}
+			}
+		}
+
+	}
+}

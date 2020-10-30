@@ -1,60 +1,27 @@
-// .nav {
-//   width: $slider-size;
-//   padding: $margin;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
+nav {
+    width: 7rem;
+    height: 100vh;
+    background-color: $color-darkblue;
+    // position: sticky;
+    // top: 0; 
 
-//   display: grid;
-//   grid-template-columns: repeat(3, 1fr);
-//   grid-template-rows: max-content;
-//   align-items: start;
+    a {
+        text-decoration: none;
+        color: transparent;
+        padding: 2rem;
+        display: block;
+    }
 
-//   transform: translateX(-100vw);
-//   animation: menuIn 0.4s ease-in 3s forwards;
+    svg:nth-of-type(1) {
+        height: 3rem;
+        width: 3rem;
+        fill: $color-mainfucsia;
+    }
 
-//   z-index: 100;
-
-//   @include tablet {
-//     width: 100vw;
-//     transform: translateX(0);
-//     animation: none;
-//     position: fixed;
-//     // z-index: 101;
-//   }
-
-//   @include landscape {
-//     display: none;
-//   }
-
-//   * {
-//     cursor: pointer;
-//   }
-
-//   &_menu {
-//     width: 3.5rem;
-//     height: 3.5rem;
-//   }
-
-//   &_logo {
-//     justify-self: center;
-//     width: 10rem;
-//     height: 10rem;
-//   }
-
-//   &_user {
-//     width: 3.5rem;
-//     height: 3.5rem;
-
-//     &-link {
-//       justify-self: right;
-//     }
-//   }
-// }
-
-// #reviews .nav {
-//   position: relative;
-//   width: 100%;
-//   animation: none;
-//   transform: translateX(0);
-// }
+    .active {
+        background-color: $color-mainfucsia;
+        svg {
+            fill: white;
+        }
+    }
+}

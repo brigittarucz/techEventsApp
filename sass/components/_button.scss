@@ -1,43 +1,81 @@
-// .button {
-//   position: relative;
+.btn {
+    height: 4.5rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    width: 15rem;
+    border-radius: 0.5rem;
+    letter-spacing: 0.1rem;
+    color: $color-greyblue;
+    border: 0;
+    margin: 2rem 0;
 
-//   display: block;
-//   width: 24rem;
-//   height: 5rem;
-//   margin: auto;
+    &__transparent {
+        opacity: 0.8;
+        font-weight: 600;
+    }
 
-//   font-size: $text-m;
-//   font-weight: 400;
-//   color: $color-mint;
-//   text-transform: lowercase;
-//   cursor: pointer;
+    &__dark {
+        background-color: $color-greyblue;
+        color: white;
+        width: 100%;
+    }
 
-//   background: transparent;
-//   border: 2px solid $color-purple;
-//   border-radius: 3rem;
-//   outline: none;
+    &__slim {
+        background-color: $color-lightblue;
+        color: white;
+        height: 3rem;
+        padding: 0;
+        font-size: 1.4rem;
+        width: 14rem;
+        opacity: 0.75;
+    }
 
-//   transition: all 0.35 ease-in;
+    &__turqoise {
+        width: 20rem;
+        font-weight: 600;
+        background-color: $color-mainturqoise;
+        color: white;
+        box-shadow: $shadow-mainturqoise15;
+        margin-left: calc(50% - 10rem);
+    }
 
-//   &:active {
-//     transform: scale(1) translateY(0.5rem);
-//   }
-// }
+    &__utility {
+        height: 3.5rem;
+        background-color: $color-mainfucsia;
+        padding: 0 2rem;
+        border: 0;
+        border-radius: 0.5rem;
+        font-size: 1.6rem;
+        color: $color-pastelblue;
 
-// .button-small {
-//   display: block;
-//   width: 16rem;
-//   height: 4rem;
-//   margin: auto;
+        &::after {
+            content: '';
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-left: 1.5rem;
+            height: 1.5rem;
+            width: 1.5rem;
+            float: right;
+        }
 
-//   font-size: $text-s;
-//   font-weight: 400;
-//   color: $color-mint;
-//   text-transform: lowercase;
-//   cursor: pointer;
+        &-date {
+            &::after {
+                background-image: url("assets/svg/calendar.svg");
+            }
+        }
 
-//   background: transparent;
-//   border: 2px solid $color-purple;
-//   border-radius: 3rem;
-//   outline: none;
-// }
+        &-filter {
+
+            &::after {
+                background-image: url("assets/svg/arrow-filter.svg");
+            }
+
+            &_active {
+                border: 0.5px solid $color-secfucsia;
+                box-shadow: $shadow-secfucsia;
+            }
+        }
+    }
+}

@@ -1,51 +1,65 @@
-// body {
-// 	font-family: "Helvetica Neue", sans-serif;
-// 	font-weight: 400;
-// 	color: $color-white;
-// }
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-// .heading-primary {
-// 	font-size: $text-xl;
-// 	color: $color-mint;
-// 	font-weight: 300;
-// 	padding-bottom: 2rem;
-// }
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Roboto', sans-serif;
 
-// .heading-secondary {
-// 	font-size: $text-s;
-// 	font-weight: 500;
-// 	color: $color-mint;
-// 	padding-bottom: 1rem;
-// 	text-align: center;
-// }
+body {
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
 
-// .heading-tertiary {
-// 	font-size: $text-s;
-// 	font-weight: 400;
-// 	padding-bottom: 1rem;
-// }
+.header-primary {
+    font-size: 4rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 900;
+}
 
-// .paragraph {
-// 	font-size: $text-xs;
-// 	font-weight: 300;
-// 	hyphens: auto;
-// }
+.header-secondary {
+    font-size: 3.5rem;
+    font-weight: 500;
+}
 
-// .text-link {
-// 	&,
-// 	&:link,
-// 	&:visited {
-// 		font-size: $text-l;
-// 		color: $color-mint;
-// 		font-weight: 300;
+.header-tertiary {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
 
-// 		text-decoration: none;
-// 		border: none;
-// 		cursor: pointer;
+.header-quaternary {
+    font-size: 2.2rem;
+    font-weight: 400;
+}
 
-// 		transition: all 0.1s ease-in;
-// 	}
-// 	&:hover {
-// 		color: $color-purple;
-// 	}
-// }
+.header-quinary {
+    font-size: 1.8rem;
+    font-weight: 400;
+    
+    &_bold {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+}
+
+.paragraph-primary {
+    font-size: 2.2rem;
+    font-weight: 400;
+
+    &_bold {
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
+}
+
+.paragraph-secondary {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.paragraph-quaternary {
+    font-size: 1.4rem;
+    font-weight: 400;
+
+    &_bold {
+        font-weight: 600;
+    }
+}

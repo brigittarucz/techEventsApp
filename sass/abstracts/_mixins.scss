@@ -18,3 +18,78 @@
 //     @content;
 //   }
 // }
+
+@mixin divGrid($nthNumber, $gridColumn, $gridRow) {
+	div:nth-of-type(#{$nthNumber}) {
+		grid-column: #{$gridColumn};
+		grid-row: #{$gridRow};
+	}
+}
+
+@mixin scrollBar {
+    &::-webkit-scrollbar-track {
+        border: 1px solid black;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-mainfucsia;
+    }
+}
+
+@mixin formGroup($colorLabel, $colorInputBg, $colorInput) {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+
+    & * {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    label {
+        font-size: 1.4rem;
+        color: #{$colorLabel};
+    }
+
+    input {
+        width: 100%;
+        border-radius: 0.5rem;
+        background-color: #{$colorInputBg};
+        border: 0;
+        padding: 0.5rem 1.5rem;
+        height: 4.5rem;
+        font-size: 1.6rem;
+        color: #{$colorInput};
+    }
+}
+
+@mixin formSelect($colorLabel, $colorInputBg, $colorInput) {
+    margin-bottom: 1rem;
+        margin-top: 0.5rem;
+
+        & * {
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        label {
+            font-size: 1.4rem;
+            color: #{$colorLabel};
+        }
+
+        select {
+            width: 100%;
+            border-radius: 0.5rem;
+            background-color: #{$colorInputBg};
+            border: 0;
+            padding: 0.5rem 1.5rem;
+            height: 4.5rem;
+            font-size: 1.6rem;
+            color: #{$colorInput};
+        }
+}
