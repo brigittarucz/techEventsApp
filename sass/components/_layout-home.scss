@@ -44,15 +44,18 @@
 		}
 
 		&_details {
-			grid-column: 1/span 1;
+			grid-column: 1/span 1; 
 			grid-row: 1/span 2;
 
 			& * {
 				margin-bottom: 1.5rem;
 			}
-
-			&-location {
+ 
+			&-location, &-date {
+				margin-right: 1.5rem;
+				opacity: 0.8;
 				color: $color-mediumgrey;
+				display: inline-block;
 			}
 
 			.paragraph-ternary {
@@ -160,7 +163,7 @@
 
 		&_container {
 			overflow-y: scroll;
-			height: 82.5vh;
+			height: 75vh;
 			margin: 0 -2.5rem;
 			padding: 0 1.5rem 0 2rem;
 

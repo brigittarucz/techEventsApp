@@ -1,0 +1,152 @@
+<%- include('../includes/head.ejs') %>
+
+<body>
+    <div class="dashboard__wrapper">
+
+        <%- include('../includes/nav.ejs') %>
+
+        <main class="main__dashboard">
+
+            <section class="main__dashboard-schedule">
+                <h2 class="header-secondary">Calendar</h2>
+                <div class="main__dashboard-schedule_calendar">
+                    <h4 class="header-quaternary">November 2020 </h4>
+                    <div class="dashboard__calendar-arrows">
+                        <div>
+                            <img src="assets/svg/arrow.svg" alt="">
+                        </div>
+                        <div>
+                            <img src="assets/svg/arrow.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="dashboard__calendar-button">
+                        <button class="dashboard__calendar-button-week">Week</button>
+                        <button class="dashboard__calendar-button-month">Month</button>
+                    </div>
+                    <div class="dashboard__calendar-date">
+                       <!-- CALENDAR -->
+                    </div>
+                </div>
+                <div class="main__dashboard-schedule_upcoming">
+                    <div class="main__dashboard-schedule_upcoming-wrapper">
+                        <div class="dashboard__schedule-upcoming_container">
+                            <h5 class="header-quinary_bold dashboard__schedule-upcoming_date-main">October, 16</h5>
+                            <div class="dashboard__schedule-upcoming">
+                                <div class="dashboard__schedule-upcoming_left">
+                                    <p class="paragraph-primary_bold schedule-item_start">09:00</p>
+                                    <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                </div>
+                                <div class="dashboard__schedule-upcoming_right">
+                                    <h5 class="header-quinary schedule-item_title">TechBBQ</h5>
+                                    <p class="paragraph-quaternary_light schedule-item_topic">A place where entrepreneurs meet</p>
+                                </div>
+                            </div>
+                            <div class="dashboard__schedule-upcoming dashboard__schedule-upcoming_active">
+                                <div class="dashboard__schedule-upcoming_left">
+                                    <p class="paragraph-primary_bold schedule-item_start">09:00</p>
+                                    <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                </div>
+                                <div class="dashboard__schedule-upcoming_right">
+                                    <h5 class="header-quinary schedule-item_title">TechBBQ</h5>
+                                    <p class="paragraph-quaternary_light schedule-item_topic">A place where entrepreneurs meet</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard__schedule-upcoming_container">
+                            <h5 class="header-quinary_bold dashboard__schedule-upcoming_date-main">November, 22</h5>
+                            <div class="dashboard__schedule-upcoming">
+                                <div class="dashboard__schedule-upcoming_left">
+                                    <p class="paragraph-primary_bold schedule-item_start">09:00</p>
+                                    <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                </div>
+                                <div class="dashboard__schedule-upcoming_right">
+                                    <h5 class="header-quinary schedule-item_title">TechBBQ</h5>
+                                    <p class="paragraph-quaternary_light schedule-item_topic">A place where entrepreneurs meet</p>
+                                </div>
+                            </div>
+                            <div class="dashboard__schedule-upcoming dashboard__schedule-upcoming">
+                                <div class="dashboard__schedule-upcoming_left">
+                                    <p class="paragraph-primary_bold schedule-item_start">09:00</p>
+                                    <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                </div>
+                                <div class="dashboard__schedule-upcoming_right">
+                                    <h5 class="header-quinary schedule-item_title">TechBBQ</h5>
+                                    <p class="paragraph-quaternary_light schedule-item_topic">A place where entrepreneurs meet</p>
+                                </div>
+                            </div>
+                        </div>                                        
+                    </div>
+                </div>
+            </section>
+
+            <section class="main__dashboard-suggestions">
+                <h3 class="header-tertiary">Suggestions</h3>
+                <div class="main__dashboard-suggestions_container">
+                    <%- include('../includes/event.ejs', {events: eventsSuggested, pathPOST: '/home/event-add' }) %>
+                </div>
+            </section>
+
+            <section class="main__dashboard-profile">
+                <h3 class="header-tertiary">Edit Profile</h3>
+                <div class="main__profile-user_details">
+                    <img src="assets/images/user.jpg" alt="">
+                    <div>
+                        <p class="paragraph-secondary">Katya Romanova</p>
+                        <p class="paragraph-quaternary">Frontend Web Developer</p>
+                        <p class="paragraph-quaternary">Prague, Czech Republic</p>
+                    </div>
+                </div>
+                <div class="main__profile-user_data">
+                    <form class="main__profile-edit_form">
+                        <div class="profile__form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" name="email" value="thisisarealisticemail@email.com">
+                        </div>
+                        <div class="profile__form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" value="">
+                        </div>
+                        <div class="profile__form-select">
+                            <label for="proffesion">Profession</label>
+                            <select name="proffesion">
+                                <option value="frontend">Frontend</option>
+                                <option value="backend">Backend</option>
+                            </select>
+                        </div>
+                        <div class="profile__interests">
+                            <ul>
+                                <li class="profile__interests-tag">AI</li>
+                                <li class="profile__interests-tag">Data Science</li>
+                                <li class="profile__interests-tag">Privacy And Security</li>
+                                <li class="profile__interests-tag">Mobile Development</li>
+                            </ul>
+                        </div>
+                        <div class="profile__form-group">
+                            <label for="experience">Experience ( Years )</label>
+                            <input type="text" name="experience" value="5">
+                        </div>
+                        <div class="profile__form-add">
+                            <label for="interests">Interests</label>
+                            <input type="text" name="interests" value="5">
+                        </div>
+                        <div class="profile__form-group">
+                            <label for="newpassword">New Password</label>
+                            <input type="password" name="newpassword" value="">
+                        </div>
+                        <div class="profile__form-group">
+                            <label for="repeatpassword">Repeat Password</label>
+                            <input type="password" name="repeatpassword" value="">
+                        </div>
+
+                        <button class="btn btn__turqoise" type="submit">UPDATE PROFILE</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+    </div>
+    
+    <script src="/js/window-location.js"></script>
+</body>
+
+</html>

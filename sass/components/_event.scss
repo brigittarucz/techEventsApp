@@ -6,28 +6,11 @@
 		border-radius: 1.5rem;
 	}
 
-	&-background_1 {
-		background: url('./assets/images/event-3.jpg');
-		background-size: cover;
-		background-position: bottom;
-	}
-
-	&-background_2 {
-		background: url('./assets/images/event-2.jpg');
-		background-size: cover;
-		background-position: bottom;
-	}
-
-	&-background_3 {
-		background: url('./assets/images/event-1.jpg');
-		background-size: cover;
-		background-position: bottom;
-	}
-
 	&-background_color {
 		display: inline-block;
-		background: url('./assets/svg/event-overlay.svg');
+		background: url('../assets/svg/event-overlay.svg');
 		background-repeat: no-repeat;
+		background-size: 110%;
 		background-position: bottom;
 		border-bottom-left-radius: 1.5rem;
 		border-bottom-right-radius: 1.5rem;
@@ -35,7 +18,7 @@
 
 		display: grid;
 		grid-template-columns: 1fr 1.5fr 1fr;
-		grid-template-rows: 1.5fr 4fr 2fr;
+		// grid-template-rows: 1.5fr 4fr 2fr;
 	}
 
 	&-details {
@@ -70,13 +53,15 @@
 	}
 
 	&-tags {
-		grid-column: 1/span 3;
+		grid-column: 1/span 3; 
 		grid-row: 3/span 1;
 
 		ul {
+			margin-top: 1rem;
 			list-style-type: none;
 
 			li {
+				text-transform: capitalize;
 				font-size: 1.4rem;
 				display: inline-block;
 				margin-right: 1rem;

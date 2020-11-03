@@ -62,14 +62,14 @@
 
         &-date {
             &::after {
-                background-image: url("assets/svg/calendar.svg");
+                background-image: url("../assets/svg/calendar.svg");
             }
         }
 
         &-filter {
 
             &::after {
-                background-image: url("assets/svg/arrow-filter.svg");
+                background-image: url("../assets/svg/arrow-filter.svg");
             }
 
             &_active {

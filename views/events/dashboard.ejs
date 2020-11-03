@@ -1,0 +1,158 @@
+<%- include('../includes/head.ejs') %>
+
+    <div class="main__wrapper">
+
+        <%- include('../includes/nav.ejs') %>
+
+        <main class="main__home">
+
+            <section class="main__home-events">
+                <div class="main__home-events_wrapper">
+                    <h2 class="header-secondary">Events</h2>
+                    <div class="main__home-events_filtering">
+                        <h4 class="header-quaternary">Filter By</h4>
+                        <button class="btn__utility btn__utility-filter btn__utility-filter_active" onclick="sortByRelevance()">Relevance: Highest to Lowest</button>
+                        <button class="btn__utility btn__utility-filter" onclick="sortByDate()">Date: Closest to Latest</button>
+                    </div>
+
+                    <div class="main__home-events_container">
+                        <%- include('../includes/event.ejs', {events: events, pathPOST: '/dashboard/events' }) %>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="main__home-presentation">
+                <div class="main__home-presentation_wrapper">
+                    <article class="main__home-presentation_wrapper-general">
+                        <div class="main__home-presentation_details">
+                            <h2 class="main__home-presentation_details-title header-secondary"><%= events.length ? events[events.length-1].title : 'RTE2020' %></h2>
+                            <p class="main__home-presentation_details-location paragraph-ternary"><%= events.length ? events[events.length-1].location : 'Virtual' %></p>
+                            <p class="main__home-presentation_details-date paragraph-ternary"><%= events.length ? events[events.length-1].date : '13 October 2020,14 October 2020' %></p>
+                            <p class="main__home-presentation_details-paragraph paragraph-ternary">Times may be uncertain,
+                                but one thing remains true. There’s a simple power in people coming together. That’s why Web
+                                Summit is going online this December. </p>
+                            <p class="main__home-presentation_details-paragraph paragraph-ternary"> We’re a company from
+                                Dublin, Ireland that holds events online and across the world – Web Summit, Collision and
+                                RISE. </p>
+                            <p class="main__home-presentation_details-paragraph paragraph-ternary"> Forbes has said we run
+                                “the best technology conference on the planet”; The Atlantic that Web Summit is “where the
+                                future goes to be born”; The New York Times that we assemble “a grand conclave of the tech
+                                industry’s high priests.” </p>
+                        </div>
+                        <div class="main__home-presentation_event-image">
+                            <img src="assets/images/event-<%= events.length ? events.length : '1' %>.jpg" alt="">
+                        </div>
+                        <div class="main__home-presentation_event-actions">
+                            <a href="<%= events.length ? events[events.length-1].event_link : 'https://www.runtheworld.today/app/c/rte2020' %>">
+                                <button class="btn btn__slim">VISIT WEBSITE</button>
+                            </a>
+                            <button class="btn btn__slim">ADD EVENT</button>
+                        </div>
+                    </article>
+
+                    <article class="main__home-presentation_wrapper-schedules">
+                        <div class="main__home-presentation_schedule-actions">
+                            <h3 class="header-tertiary">Schedule</h3>
+                            <button class="btn__utility btn__utility-date">Pick Date</button>
+                        </div>
+                        <div class="main__home-presentation_schedule">
+                            <div class="main__home-presentation_schedule-item">
+                                <p class="paragraph-secondary schedule-item_start">09:00</p>
+                                <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                <h5 class="header-quinary schedule-item_title">Opening Ceremony</h5>
+                                <p class="paragraph-quaternary_light schedule-item_topic">On leadership and society</p>
+                                <div>
+                                    <img src="assets/svg/heart.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="main__home-presentation_schedule-item">
+                                <p class="paragraph-secondary schedule-item_start">09:00</p>
+                                <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                <h5 class="header-quinary schedule-item_title">Opening Ceremony</h5>
+                                <p class="paragraph-quaternary_light schedule-item_topic">On leadership and society</p>
+                                <div>
+                                    <img src="assets/svg/heart.svg" alt="">
+                                </div>                            
+                            </div>
+                            <div class="main__home-presentation_schedule-item">
+                                <p class="paragraph-secondary schedule-item_start">09:00</p>
+                                <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                <h5 class="header-quinary schedule-item_title">Opening Ceremony</h5>
+                                <p class="paragraph-quaternary_light schedule-item_topic">On leadership and society</p>
+                                <div></div>
+                            </div>
+                            <div class="main__home-presentation_schedule-item">
+                                <p class="paragraph-secondary schedule-item_start">09:00</p>
+                                <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                <h5 class="header-quinary schedule-item_title">Opening Ceremony</h5>
+                                <p class="paragraph-quaternary_light schedule-item_topic">On leadership and society</p>
+                                <div></div>
+                            </div>
+                            <div class="main__home-presentation_schedule-item">
+                                <p class="paragraph-secondary schedule-item_start">09:00</p>
+                                <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                <h5 class="header-quinary schedule-item_title">Opening Ceremony</h5>
+                                <p class="paragraph-quaternary_light schedule-item_topic">On leadership and society</p>
+                                <div></div>
+                            </div>
+                            <div class="main__home-presentation_schedule-item">
+                                <p class="paragraph-secondary schedule-item_start">09:00</p>
+                                <p class="paragraph-quaternary_bold schedule-item_end">10:30</p>
+                                <h5 class="header-quinary schedule-item_title">Opening Ceremony</h5>
+                                <p class="paragraph-quaternary_light schedule-item_topic">On leadership and society</p>
+                                <div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="main__home-presentation_wrapper-comments">
+                        <h3 class="header-tertiary">Comments</h3>
+                        <div class="main__home-presentation_comment">
+                            <div class="main__home-presentation_comment-image">
+                                <img src="assets/images/user.jpg" alt="">
+                            </div>
+                            <div class="main__home-presentation_comment-user">
+                                <p class="paragraph-secondary">Katya Romanova</p>
+                                <p class="paragraph-quaternary">Frontend Web Developer</p>
+                            </div>
+                            <p class="paragraph-ternary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                molestiae illo dolore eius nostrum quisquam.</p>
+                        </div>
+
+                        <div class="main__home-presentation_comment">
+                            <div class="main__home-presentation_comment-image">
+                                <img src="assets/images/user.jpg" alt="">
+                            </div>
+                            <div class="main__home-presentation_comment-user">
+                                <p class="paragraph-secondary">Katya Romanova</p>
+                                <p class="paragraph-quaternary">Frontend Web Developer</p>
+                            </div>
+                            <p class="paragraph-ternary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                molestiae illo dolore eius nostrum quisquam.</p>
+                        </div>
+
+                        <div class="main__home-presentation_comment">
+                            <div class="main__home-presentation_comment-image">
+                                <img src="assets/images/user.jpg" alt="">
+                            </div>
+                            <div class="main__home-presentation_comment-user">
+                                <p class="paragraph-secondary">Katya Romanova</p>
+                                <p class="paragraph-quaternary">Frontend Web Developer</p>
+                            </div>
+                            <p class="paragraph-ternary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
+                                molestiae illo dolore eius nostrum quisquam.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="/js/sort-dashboard.js"></script>
+    <script src="/js/window-location.js"></script>
+</body>
+
+</html>

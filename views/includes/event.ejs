@@ -1,0 +1,44 @@
+<%  var i = 0;
+if(events.length) {
+events.forEach( oEvent => { i++; %>
+<article class="article__event"
+data-difficulty="<%= oEvent.topics_difficulty %>" 
+data-target="<%= oEvent.proffessional_target %>"
+data-relevance="<%= oEvent.similarity %>"
+data-timestamp="<%= oEvent.timestamp %>"
+>
+    <div class="article__event-background_image article__event-background_<%= i %>" style="background:url('../assets/images/event-<%= i %>.jpg'); background-size:cover; background-position:bottom;">
+        <div class="article__event-background_color">
+            <form method="POST" action="<%= pathPOST %>">
+                <input type="hidden" name="eventId" value="<%= oEvent.id %>">
+                <button class="btn btn__slim">ADD EVENT</button>
+            </form>
+            <div class="article__event-details">
+                <h4 class="article__event-details_title header-quaternary"><%= oEvent.title %></h4>
+                <p class="article__event-details_location paragraph-quaternary"><%= oEvent.location %></p>
+                <p class="article__event-details_date paragraph-quaternary"><%= oEvent.date %></p>
+                <p class="article__event-details_topic paragraph-quaternary"><%= oEvent.attendance_price %></p>
+                <p class="article__event-details_description paragraph-ternary">Times may be
+                    uncertain, but one thing remains true. There’s a simple power in people coming
+                    together. That’s why Web Summit is going online this December.
+                </p>
+            </div>
+            <div class="article__event-image">
+                <img src="assets/images/event-<%= i %>.jpg" alt="">
+            </div>
+            <div class="article__event-tags">
+                <ul>
+                    <% oEvent.topics.forEach(sTopic => { %> 
+                        <li class="article__event-tag"><%= sTopic %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</article>
+<% })
+} else { %>
+<br>
+<p> There are no other events you haven't already added to your calendar at the current moment. <br><br> We are constantly adding new events so hold on for more tasty social experiences that ought to come! </p>
+
+<% } %>
