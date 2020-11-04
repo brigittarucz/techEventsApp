@@ -29,7 +29,12 @@
         padding: 0;
         font-size: 1.4rem;
         width: 14rem;
-        opacity: 0.75;
+        opacity: 0.75;  
+        display: inline;
+
+        &-delete {
+            background-color: $color-mainfucsia; 
+        }
     }
 
     &__turqoise {

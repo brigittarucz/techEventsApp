@@ -27,8 +27,8 @@ module.exports = class User {
     }
 
     saveUser() {
-        return db.execute('UPDATE users SET email = ?, password = ?, proffesion = ?, interests = ? WHERE users.id = ?', 
-        [this.email, this.password, this.proffesion, this.interests, this.id]);
+        return db.execute('UPDATE users SET email = ?, password = ?, proffesion = ?, experience = ?, interests = ? WHERE users.id = ?', 
+        [this.email, this.password, this.proffesion, this.experience, this.interests, this.id]);
     }
 
     static updateUserEvents(id, event) {

@@ -82,7 +82,7 @@
             <section class="main__dashboard-suggestions">
                 <h3 class="header-tertiary">Suggestions</h3>
                 <div class="main__dashboard-suggestions_container">
-                    <%- include('../includes/event.ejs', {events: eventsSuggested, pathPOST: '/home/event-add' }) %>
+                    <%- include('../includes/event.ejs', {events: eventsSuggested, pathPOST: '/profile/event-add' }) %>
                 </div>
             </section>
 
@@ -97,37 +97,37 @@
                     </div>
                 </div>
                 <div class="main__profile-user_data">
-                    <form class="main__profile-edit_form">
+                    <form class="main__profile-edit_form" method="POST" action='/profile'>
                         <div class="profile__form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" name="email" value="thisisarealisticemail@email.com">
+                            <input type="email" name="email" value="<%= user.email %>">
                         </div>
                         <div class="profile__form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" value="">
+                            <input type="password" name="password" placeholder="Enter password">
                         </div>
                         <div class="profile__form-select">
                             <label for="proffesion">Profession</label>
                             <select name="proffesion">
+                                <option value="<%= user.proffesion %>"><%= user.proffesion %></option>
                                 <option value="frontend">Frontend</option>
                                 <option value="backend">Backend</option>
                             </select>
                         </div>
                         <div class="profile__interests">
                             <ul>
-                                <li class="profile__interests-tag">AI</li>
-                                <li class="profile__interests-tag">Data Science</li>
-                                <li class="profile__interests-tag">Privacy And Security</li>
-                                <li class="profile__interests-tag">Mobile Development</li>
+                                <% user.interests.forEach(sTopic => { %> 
+                                    <li class="profile__interests-tag"><%= sTopic %></li>
+                                <% }) %>
                             </ul>
                         </div>
                         <div class="profile__form-group">
                             <label for="experience">Experience ( Years )</label>
-                            <input type="text" name="experience" value="5">
+                            <input type="number" name="experience" value="<%= user.experience %>">
                         </div>
                         <div class="profile__form-add">
                             <label for="interests">Interests</label>
-                            <input type="text" name="interests" value="5">
+                            <input type="text" name="interests" value="<%= user.interests %>">
                         </div>
                         <div class="profile__form-group">
                             <label for="newpassword">New Password</label>

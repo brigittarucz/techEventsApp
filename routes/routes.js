@@ -22,9 +22,9 @@ router.get('/dashboard', eventsController.getEvents);
 router.post('/dashboard/events', eventsController.postAddEvent);
 
 router.get('/profile', profileController.getProfile);
-// router.post('/home/profile', profileController.postProfile);
+router.post('/profile', profileController.postProfile);
 // router.post('/home/event-delete', profileController.postDeleteFromCalendar);
-// router.post('/home/event-add', profileController.postAddFromSuggested);
+router.post('/profile/event-add', profileController.postAddFromSuggested);
 
 // ALWAYS LAST ROUTE
 

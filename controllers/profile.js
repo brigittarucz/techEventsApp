@@ -85,6 +85,8 @@ exports.getProfile = (req,res,next) => {
 
                     utilities.formatPrice(user, aCalendarEvents);
 
+                    user.interests = user.interests.split(',');
+
                     res.render('events/profile', {
                         pageTitle: 'Profile',
                         user: user,
@@ -96,20 +98,61 @@ exports.getProfile = (req,res,next) => {
 
             }).catch(error => {
                 console.log(new Error(error));
-                res.redirect('/dashboard');
+                res.redirect('/profile');
             })
              
         } else {
             console.log(new Error("Invalid user id"));
-            res.redirect('/dashboard');
+            res.redirect('/profile');
         }
 
 
     }).catch(error => {
         console.log(new Error(error));
-        res.redirect('/dashboard');
+        res.redirect('/profile');
     })
     
+}
+
+exports.postAddFromSuggested = (req, res, next) => {
+    
+    User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
+
+        // TODO: remove event node from main 
+
+        var sUserExists = user[0][0] !== undefined ? true : false;
+        if(sUserExists) {
+            user = user[0][0];
+            
+            // TODO: continue
+
+            utilities.addToEventArray(user, req).then(result => {
+                if(!result) {
+                    console.log(new Error("Event already exists"));
+                    return res.redirect('/profile');
+                }
+                
+                var sUpdatedEvents = result;
+
+                User.updateUserEvents(localStorage.getItem('sessionId'), sUpdatedEvents).then( () => {
+                    return res.redirect('/profile');
+                }).catch(error => {
+                    console.log(new Error(error));
+                    return res.redirect('/profile');
+                })
+
+            });        
+
+        } else {
+            console.log(new Error("Invalid user id"));
+            return res.redirect('/dashboard');
+        }
+
+    }).catch(error => {
+        console.log(new Error(error));
+        return res.redirect('/dashboard');
+    })  
+      
 }
 
 exports.postProfile = (req, res, next) => {
@@ -119,40 +162,67 @@ exports.postProfile = (req, res, next) => {
     User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
 
         var sUserExists = user[0][0] !== undefined ? true : false;
-        if(sUserExists) {
-            user = user[0][0];
-            if(user.email !== req.body.email || user.password !== req.body.password ||
-                user.proffesion !== req.body.proffesion || user.interests !== req.body.interests ) {
-                    
-                    const updatedUser = new User(localStorage.getItem('sessionId'), req.body.email, req.body.password, req.body.proffesion, req.body.interests, user.interests);
-                    updatedUser.saveUser().then(res => {
-                        console.log(res[0]);
-                    }).catch(err => {
-                        console.log(err);
-                    })
 
-                    res.write("Changes have been made");
-                    console.log("Changes have been made");
-                    res.end();
-                } else {
-                    res.status(400);
-                    res.setHeader('Content-Type', 'application/json');
-                    res.write('{"error": "Changes have not been made"}');
-                    res.end();  
+        if(sUserExists) {
+
+            if(!req.body.password) {
+                console.log(new Error("Password unset"));
+                return res.redirect('/profile');
+            }
+
+            var userDatabase = user[0][0];
+            userDatabase.interests = userDatabase.interests.replace(/\s/g, '');
+            delete userDatabase.events;
+
+            var userInput = new User(userDatabase.id, req.body.email, req.body.password, req.body.proffesion, parseInt(req.body.experience), req.body.interests, '');
+            delete userInput.events;
+
+            if(userDatabase.password != userInput.password) {
+                console.log(new Error("Password incorrect"));
+                return res.redirect('/profile');
+            }
+
+            if(req.body.newpassword) {
+
+                if(req.body.newpassword != req.body.repeatpassword) {
+                    console.log(new Error("Passwords do not match"));
+                    return res.redirect('/profile');
                 }
+
+                userInput.password = req.body.newpassword;
+            }
+            
+            if(userDatabase.email == userInput.email) {
+                if(userDatabase.password == userInput.password) {
+                    if(userDatabase.proffesion == userInput.proffesion) {
+                        if(userDatabase.experience == userInput.experience) {
+                            if(userDatabase.interests == userInput.interests) {
+                                console.log(new Error("No changes"));
+                                return res.redirect('/profile');
+                            }
+                        }
+                    }
+                }  
+            }
+
+            userInput.saveUser().then(response => {
+                console.log(response[0]);
+                console.log("Changes have been made");
+                return res.redirect('/profile');
+            }).catch(error => {
+                console.log(new Error("Changes have not been made, due to "+ error));
+                return res.redirect('/profile');
+            })
+
         } else {
-            res.status(404);
-            res.setHeader('Content-Type', 'application/json');
-            res.write('{"error": "Invalid user id"}');
-            res.end();  
+            console.log(new Error("Invalid user id"));
+            res.redirect('/dashboard');
         }
 
 
     }).catch(err => {
-        res.status(400);
-        res.setHeader('Content-Type', 'application/json');
-        res.write('{"error": '+ err +'}');
-        res.end();
+        console.log(new Error("Invalid user id"));
+        res.redirect('/dashboard');
     })
 
 }
@@ -188,74 +258,3 @@ exports.postDeleteFromCalendar = (req, res, next) => {
 }
 
 
-exports.postAddFromSuggested = (req, res, next) => {
-    
-    User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
-
-        // TODO: remove event node from main 
-
-        var sUserExists = user[0][0] !== undefined ? true : false;
-        if(sUserExists) {
-            user = user[0][0];
-            
-            // TODO: continue
-
-            utilities.addToEventArray(user, req).then(result => {
-                if(!result) {
-                    console.log(new Error("Event already exists"))
-                }
-            });
-
-            // if(user.events === '') {
-            //     var aUpdatedEvents = [];
-            //     aUpdatedEvents.push(req.body.eventId);
-            //     var sUpdatedEvents = JSON.stringify(aUpdatedEvents);
-            // } else {
-                
-            //     // TODO: check if event exists, if not add
-
-            //     var eventExists = 0;
-
-            //     var aUserEvents = JSON.parse(user.events);
-            //     aUserEvents.forEach(event => {
-            //         if (event === req.body.eventId) {
-            //             eventExists = 1;
-            //         }
-            //     });
-
-            //     if(!eventExists) {
-            //         aUserEvents.push(req.body.eventId);
-            //         var sUpdatedEvents = JSON.stringify(aUserEvents);
-            //     } else {
-            //         res.status(400);
-            //         res.setHeader('Content-Type', 'application/json');
-            //         res.write('{"error": "Event already exists"}');
-            //         res.end();  
-            //     }
-            // }
-
-            User.updateUserEvents(localStorage.getItem('sessionId'), sUpdatedEvents).then( () => {
-                return res.redirect('/home/profile');
-            }).catch(err => {
-                res.status(500);
-                res.setHeader('Content-Type', 'application/json');
-                res.write('{"error": '+ err +'}');
-                res.end();
-            })
-
-        } else {
-            res.status(404);
-            res.setHeader('Content-Type', 'application/json');
-            res.write('{"error": "Invalid user id"}');
-            res.end();  
-        }
-
-
-    }).catch(err => {
-        res.status(400);
-        res.setHeader('Content-Type', 'application/json');
-        res.write('{"error": '+ err +'}');
-        res.end();
-    })  
-      
-}

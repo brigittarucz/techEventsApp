@@ -95,6 +95,7 @@ module.exports.addToEventArray = async function addToEventArray(user, req) {
         var aUpdatedEvents = [];
         aUpdatedEvents.push(req.body.eventId);
         var sUpdatedEvents = JSON.stringify(aUpdatedEvents);
+        return sUpdatedEvents;
     } else {
 
         // TODO: check if event exists, if not add

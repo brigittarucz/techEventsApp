@@ -6,6 +6,10 @@
     &__form-group, &__form-add {
         @include formGroup($color-tertiaryturqoise, $color-darkblue, $color-lightblue);   
         
+        input::placeholder {
+            color: $color-lightblue;
+        }
+
         label {
             font-weight: 600;
         }
