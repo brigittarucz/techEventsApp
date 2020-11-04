@@ -8,7 +8,14 @@ const { fetchUser } = require('../models/user');
 localStorage = new LocalStorage('./local_storage');
 
 exports.getAuth = (req, res, next) => {
-    res.render('auth/authenticate', {
+    return res.render('auth/authenticate', {
+        pageTitle: 'Authentication',
+    })
+}
+
+exports.logoutAuth = (req, res, next) => {
+    localStorage.setItem('sessionId', '');
+    return res.render('auth/authenticate', {
         pageTitle: 'Authentication',
     })
 }

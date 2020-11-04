@@ -366,7 +366,7 @@ body {
         border-radius: 2rem;
         background-color: #36394B;
         display: grid;
-        grid-template-columns: 1.5fr 4fr;
+        grid-template-columns: 1.5fr 4fr 1fr;
         grid-column-gap: 1rem;
         padding: 1rem;
         margin-bottom: 1.5rem; }
@@ -381,6 +381,16 @@ body {
           margin: 2rem 0; }
         .main__dashboard-schedule_upcoming .dashboard__schedule-upcoming_left {
           border-right: 0.5px solid #C7D4E6; }
+        .main__dashboard-schedule_upcoming .dashboard__schedule-upcoming_right {
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+          .main__dashboard-schedule_upcoming .dashboard__schedule-upcoming_right button {
+            background-color: transparent;
+            border: 0; }
+          .main__dashboard-schedule_upcoming .dashboard__schedule-upcoming_right svg {
+            width: 2rem;
+            height: 2rem; }
   .main__dashboard-suggestions {
     background-color: #0F111E;
     padding: 2.5rem;

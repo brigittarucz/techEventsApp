@@ -4,26 +4,16 @@ const { LocalStorage } = require('node-localstorage');
 localStorage = new LocalStorage('./local_storage');
 
 var utilities = require('../public/js/functions');
-
 const User = require('../models/user');
 const Event = require('../models/event');
-const dateFormatter = require('date-fns')
-
-function similar_text(a,b) {
-    var equivalency = 0;
-    var minLength = (a.length > b.length) ? b.length : a.length;    
-    var maxLength = (a.length < b.length) ? b.length : a.length;    
-    for(var i = 0; i < minLength; i++) {
-        if(a[i] == b[i]) {
-            equivalency++;
-        }
-    }
-
-    var weight = equivalency / maxLength;
-    return (weight * 100) + "%";
-}
 
 exports.getProfile = (req,res,next) => {
+
+    if(localStorage.getItem('sessionId') == null) {
+        return res.render('auth/authenticate', {
+            pageTitle: 'Authentication',
+        })
+    }
 
     User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
         var user = user[0][0];
@@ -56,6 +46,7 @@ exports.getProfile = (req,res,next) => {
                         pageTitle: 'Profile',
                         user: user,
                         events: 'Search events',
+                        eventsDescription: [],
                         eventsSuggested: aSuggestedEvents,
                         sessionId: localStorage.getItem('sessionId')
                     })  
@@ -91,6 +82,9 @@ exports.getProfile = (req,res,next) => {
                         pageTitle: 'Profile',
                         user: user,
                         events: aCalendarEvents,
+                        eventsDescription: ["2021's leadership ethos", "Opening ceremony", "From gaming to mainstream",
+                        "Digital democracy with a purpose", "Work after crisis", "Can technology save the world?",
+                        "Brand obsessions", "Paving the way for sustainable future", "What is wrong with capitalism?"],
                         eventsSuggested: aSuggestedEvents,
                         sessionId: localStorage.getItem('sessionId')
                     })   
@@ -115,7 +109,13 @@ exports.getProfile = (req,res,next) => {
 }
 
 exports.postAddFromSuggested = (req, res, next) => {
-    
+
+    if(localStorage.getItem('sessionId') == null) {
+        return res.render('auth/authenticate', {
+            pageTitle: 'Authentication',
+        })
+    }
+
     User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
 
         // TODO: remove event node from main 
@@ -157,6 +157,11 @@ exports.postAddFromSuggested = (req, res, next) => {
 
 exports.postProfile = (req, res, next) => {
 
+    if(localStorage.getItem('sessionId') == null) {
+        return res.render('auth/authenticate', {
+            pageTitle: 'Authentication',
+        })
+    }
     // TODO: check for changes
 
     User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
@@ -227,11 +232,17 @@ exports.postProfile = (req, res, next) => {
 
 }
 
-
 exports.postDeleteFromCalendar = (req, res, next) => {
 
+    if(localStorage.getItem('sessionId') == null) {
+        return res.render('auth/authenticate', {
+            pageTitle: 'Authentication',
+        })
+    }
+    
     User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
         var aUserEvents = JSON.parse(user[0][0].events);
+        console.log(aUserEvents.length);
         for(let i = 0; i < aUserEvents.length; i++) {
             if(aUserEvents[i] === req.body.eventId) {
                 aUserEvents.splice(i, 1);
@@ -239,21 +250,16 @@ exports.postDeleteFromCalendar = (req, res, next) => {
             }
         }
 
-
-        User.updateUserEvents(localStorage.getItem('sessionId'), (aUserEvents.length > 0 ? JSON.stringify(aUserEvents) : null)).then( () => {
-            return res.redirect('/home/profile');
-        }).catch(err => {
-            res.status(500);
-            res.setHeader('Content-Type', 'application/json');
-            res.write('{"error": '+ err +'}');
-            res.end();
+        User.updateUserEvents(localStorage.getItem('sessionId'), (aUserEvents.length > 0 ? JSON.stringify(aUserEvents) : "")).then( () => {
+            return res.redirect('/profile');
+        }).catch(error => {
+            console.log(new Error(error));
+            return res.redirect('/profile');
         })
 
-    }).catch(err => {
-        res.status(404);
-        res.setHeader('Content-Type', 'application/json');
-        res.write('{"error": '+ err +'}');
-        res.end();
+    }).catch(error => {
+        console.log(new Error(error));
+        return res.redirect('/profile');
     })
 }
 

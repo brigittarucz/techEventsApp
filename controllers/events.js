@@ -11,6 +11,12 @@ var utilities = require('../public/js/functions');
 
 exports.getEvents = async (req,res,next) => {
 
+    if(localStorage.getItem('sessionId') == null) {
+        return res.render('auth/authenticate', {
+            pageTitle: 'Authentication',
+        })
+    }
+
     Event.fetchEvents().then(resp => {
         var aEvents = resp[0];
 
@@ -63,6 +69,12 @@ exports.getEvents = async (req,res,next) => {
 
 exports.postAddEvent = (req, res, next) => {
 
+    if(localStorage.getItem('sessionId') == null) {
+        return res.render('auth/authenticate', {
+            pageTitle: 'Authentication',
+        })
+    }
+    
     User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
 
         // TODO: remove event node from main 
