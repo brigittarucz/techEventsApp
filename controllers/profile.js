@@ -256,7 +256,7 @@ exports.postDeleteFromCalendar = (req, res, next) => {
             console.log(new Error(error));
             return res.redirect('/profile');
         })
-
+ 
     }).catch(error => {
         console.log(new Error(error));
         return res.redirect('/profile');
