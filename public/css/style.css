@@ -346,7 +346,7 @@ body {
       .main__dashboard-schedule_calendar .dashboard__calendar-date {
         grid-column: 1/span 2;
         margin: 0 -2.5rem;
-        height: 23rem;
+        height: 3rem;
         border-bottom: 0.5px solid #36394B; }
     .main__dashboard-schedule_upcoming {
       margin: 0 -2.5rem;
