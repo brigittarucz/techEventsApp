@@ -22,6 +22,7 @@ exports.getProfile = (req,res,next) => {
         if(sUserExists) {
             Event.fetchEvents().then(results => {
                 // console.log(typeof(results[0]));
+                // console.log(results[0]);
                 var aTotalEvents = results[0];
                 var aUserEvents = user.events;
 

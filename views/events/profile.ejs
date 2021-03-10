@@ -31,6 +31,7 @@
                     <div class="main__dashboard-schedule_upcoming-wrapper">
 
                         <% if(typeof(events) != 'string') {
+                            
                            events.forEach(oEvent => {
                         %>
                         <div class="dashboard__schedule-upcoming_container">
@@ -75,6 +76,8 @@
                         <% 
                         }) 
                         } else { %>
+                            <br/>
+                            <h4 class="header-quinary">You have no events. Search for some!</h4>
                             <h4 class="header-quaternary"><%= user.events %></h4>
                         <% } %>
                     </div>
