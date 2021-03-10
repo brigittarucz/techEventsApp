@@ -21,6 +21,7 @@ exports.logoutAuth = (req, res, next) => {
 }
 
 exports.postAuth = (req, res, next) => {
+    console.log(req);
     if(req.params.action == 'login') {
         User.fetchUser(req.body.email).then(result => {
                 var oUser = result[0];
