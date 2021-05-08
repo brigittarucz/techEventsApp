@@ -86,6 +86,7 @@ exports.postAuth = (req, res, next) => {
                     localStorage.setItem('sessionId', user.id);
                     return res.redirect('/dashboard');
                 }).catch(error => {
+                    console.log(error);
                     console.log(new Error("User cannot be created"));
                     res.redirect('/authenticate');
                 })

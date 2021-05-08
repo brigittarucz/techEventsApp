@@ -18,8 +18,9 @@ module.exports.formatSimilarity = async function formatSimilarity(user, aEvents)
     if (!aEvents.length) {
         return [];
     }
-
+    
     for (const oEvent of aEvents) {
+
         var aProffessionalTarget = oEvent.proffessional_target.replace(/\s/g, '');
         aProffessionalTarget = aProffessionalTarget.split(',');
 

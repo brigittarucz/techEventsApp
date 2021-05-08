@@ -27,6 +27,8 @@ exports.getEvents = async (req,res,next) => {
             var user = user[0][0];
 
             var aUserEvents = user.events;
+            
+            
             aUserEvents = aUserEvents.length ? JSON.parse(aUserEvents) : 0;
 
             if(aUserEvents) {
@@ -40,6 +42,7 @@ exports.getEvents = async (req,res,next) => {
                     }
                 }
             }
+
 
             utilities.formatSimilarity(user, aEvents).then(aEvents => {
                 utilities.formatDate(user, aEvents).then(aEvents => {
