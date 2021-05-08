@@ -12,6 +12,7 @@ var utilities = require('../public/js/functions');
 exports.getEvents = async (req,res,next) => {
 
     if(localStorage.getItem('sessionId') == null) {
+        res.setHeader('path', '/authenticate')
         return res.render('auth/authenticate', {
             pageTitle: 'Authentication',
         })
@@ -19,18 +20,22 @@ exports.getEvents = async (req,res,next) => {
 
     Event.fetchEvents().then(resp => {
         var aEvents = resp[0];
-
         // TODO: Exclude events added to the user's list
-
+        
         User.fetchUserById(localStorage.getItem('sessionId')).then( user => {
-
+            
             var user = user[0][0];
+
+            // user.proffesion = 'Javascript Developer';
+
+            // utilities.formatSimilarity(user, aEvents).then(res => {
+            //     console.log(res);
+            // })
 
             var aUserEvents = user.events;
             
-            
             aUserEvents = aUserEvents.length ? JSON.parse(aUserEvents) : 0;
-
+            
             if(aUserEvents) {
                 for(let i = 0; i < aUserEvents.length; i++) {
                     for(let j = 0; j < aEvents.length; j++) {
@@ -42,8 +47,7 @@ exports.getEvents = async (req,res,next) => {
                     }
                 }
             }
-
-
+            
             utilities.formatSimilarity(user, aEvents).then(aEvents => {
                 utilities.formatDate(user, aEvents).then(aEvents => {
                     utilities.formatPrice(user, aEvents).then(aEvents => {

@@ -10,6 +10,7 @@ const Event = require('../models/event');
 exports.getProfile = (req,res,next) => {
 
     if(localStorage.getItem('sessionId') == null) {
+        res.setHeader('path', '/authenticate')
         return res.render('auth/authenticate', {
             pageTitle: 'Authentication',
         })
