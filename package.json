@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "nyc": {
-    "branches": 80,
-    "lines": 80,
-    "functions": 80,
-    "statements": 80
+    "all": true,
+    "branches": 30,
+    "lines": 50,
+    "exclude": [
+      "**/*window-location.js",
+      "**/*coverage"
+    ] 
   },
   "scripts": {
-    "test": "nyc mocha --reporter spec --check-coverage=true",
+    "test": "nyc --reporter=html --reporter=text --check-coverage=true mocha",
     "start": "nodemon app.js",
     "compile:sass": "node-sass sass/main.scss public/css/style.css -w"
   },

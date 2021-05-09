@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Project - SPA with SQL and NoSQL Execution/models/user.js</title>
+    <title>Code coverage report for Project - SPA with SQL and NoSQL Execution/test/integration.spec.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">Project - SPA with SQL and NoSQL Execution/models</a> user.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">Project - SPA with SQL and NoSQL Execution/test</a> integration.spec.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.67% </span>
+                <span class="strong">80.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/15</span>
+                <span class='fraction'>17/21</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.67% </span>
+                <span class="strong">80.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/15</span>
+                <span class='fraction'>17/21</span>
             </div>
         
             
@@ -89,17 +89,8 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -108,70 +99,61 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const e = require('express');
-const db = require('../util/database'); 
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const User = require('../models/user');
+const dbMaria = require('./db_test');
+const { expect } = require('chai');
+const uuid = require('uuid');
 &nbsp;
-module.exports = class User {
-    constructor(id, email, password, proffesion, experience, interests, events) {
-        this.id = id;
-        this.email = email;
-        // TODO: hash
-        this.password = password;
-        this.proffesion = proffesion;
-        this.experience = experience;
-        this.interests = interests;
-        this.events = events;
-    }
+describe('Database core methods', () =&gt; {
+    describe('User handling', () =&gt; {
+        it('Fetching a user by email', (done) =&gt; {
+            User.fetchUser('myemail@yahoo.com', dbMaria).then(result =&gt; {
+                var user = result[0][0];
+                expect(user.id).to.equal('1');
+                done();
+            }).catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {
+<span class="cstat-no" title="statement not covered" >                console.log(error);</span>
+<span class="cstat-no" title="statement not covered" >                done();</span>
+            })
+        })
+        it('Creating a new user through model', (done) =&gt; {
+            const user = new User(uuid.v4(), uuid.v4(), 'insecure', 'JS Developer', 5, 'Vue, NodeJS', '');
 &nbsp;
-    static fetchUser(email, database) {
-        return database.execute('SELECT * FROM users WHERE email = ?', [email]);
-    }
+            user.createUser(dbMaria).then(result =&gt; {
+                var server = result[0].serverStatus;
+                expect(server).to.equal(2);
+                done();
+            }).catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {
+<span class="cstat-no" title="statement not covered" >                console.log(error);</span>
+<span class="cstat-no" title="statement not covered" >                done();</span>
+            })
+        })
+    })
+})
 &nbsp;
-    createUser(database) {
-        return database.execute('INSERT INTO users (id, email, password, proffesion, experience, interests, events) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [ this.id, this.email, this.password, this.proffesion, this.experience, this.interests, this.events]);
-    }
-&nbsp;
-    static fetchUserById(id) {
-        return db.execute('SELECT * FROM users WHERE users.id = ?', [id]);
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    sa</span>veUser() {
-<span class="cstat-no" title="statement not covered" >        return db.execute('UPDATE users SET email = ?, password = ?, proffesion = ?, experience = ?, interests = ? WHERE users.id = ?', </span>
-        [this.email, this.password, this.proffesion, this.experience, this.interests, this.id]);
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    st</span>atic updateUserEvents(id, event) {
-<span class="cstat-no" title="statement not covered" >        return db.execute('UPDATE users SET events = ? WHERE users.id = ?', [event, id]);</span>
-    }
-&nbsp;
-}
-&nbsp;</pre></td></tr></table></pre>
+// "test": "nyc mocha --reporter spec",</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

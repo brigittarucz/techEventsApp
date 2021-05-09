@@ -3,6 +3,8 @@ const User = require('../models/user');
 const uuid = require('uuid');
 const emailValidator = require('email-validator');
 
+const db = require('../util/database');
+
 const { LocalStorage } = require('node-localstorage');
 const { fetchUser } = require('../models/user');
 localStorage = new LocalStorage('./local_storage');
@@ -23,7 +25,7 @@ exports.logoutAuth = (req, res, next) => {
 exports.postAuth = (req, res, next) => {
     console.log(req);
     if(req.params.action == 'login') {
-        User.fetchUser(req.body.email).then(result => {
+        User.fetchUser(req.body.email, db).then(result => {
                 var oUser = result[0];
                 if(oUser.length) {
                     oUser = oUser[0];
@@ -82,7 +84,7 @@ exports.postAuth = (req, res, next) => {
                 const uniqid = uuid.v4();
                 const user = new User(uniqid, req.body.email, req.body.password, req.body.proffesion, req.body.experience, req.body.interests, '');
         
-                user.createUser().then(result => {
+                user.createUser(db).then(result => {
                     localStorage.setItem('sessionId', user.id);
                     return res.redirect('/dashboard');
                 }).catch(error => {

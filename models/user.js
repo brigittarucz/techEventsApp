@@ -13,12 +13,12 @@ module.exports = class User {
         this.events = events;
     }
 
-    static fetchUser(email) {
-        return db.execute('SELECT * FROM users WHERE email = ?', [email]);
+    static fetchUser(email, database) {
+        return database.execute('SELECT * FROM users WHERE email = ?', [email]);
     }
 
-    createUser() {
-        return db.execute('INSERT INTO users (id, email, password, proffesion, experience, interests, events) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    createUser(database) {
+        return database.execute('INSERT INTO users (id, email, password, proffesion, experience, interests, events) VALUES (?, ?, ?, ?, ?, ?, ?)',
         [ this.id, this.email, this.password, this.proffesion, this.experience, this.interests, this.events]);
     }
 
