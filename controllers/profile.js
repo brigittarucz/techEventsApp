@@ -80,6 +80,7 @@ exports.getProfile = (req,res,next) => {
 
                     user.interests = user.interests.split(',');
 
+                    res.setHeader('path', '/profile')
                     res.render('events/profile', {
                         pageTitle: 'Profile',
                         user: user,

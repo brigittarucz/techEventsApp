@@ -51,6 +51,7 @@ exports.getEvents = async (req,res,next) => {
             utilities.formatSimilarity(user, aEvents).then(aEvents => {
                 utilities.formatDate(user, aEvents).then(aEvents => {
                     utilities.formatPrice(user, aEvents).then(aEvents => {
+                        res.setHeader('path', '/dashboard')
                         res.render('events/dashboard', {
                             pageTitle: 'Tech Events',
                             events: aEvents,

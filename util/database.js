@@ -12,7 +12,7 @@ const pool = mysql.createConnection({
     // host: 'localhost',
     // user: 'root',
     // database: 'techevents_users',
-    // password: 'password',
+    // password: 'test',
     // port: 3306
 });
 
